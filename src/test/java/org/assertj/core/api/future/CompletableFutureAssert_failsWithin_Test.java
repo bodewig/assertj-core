@@ -17,7 +17,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.assertj.core.util.AssertionsUtil.expectAssertionError;
 import static org.assertj.core.util.FailureMessages.actualIsNull;
-import static org.junit.jupiter.api.condition.OS.MAC;
 
 import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
@@ -26,7 +25,6 @@ import java.util.concurrent.TimeoutException;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.DisabledOnOs;
 
 @DisplayName("FutureAssert failsWithin")
 class CompletableFutureAssert_failsWithin_Test {
@@ -69,7 +67,6 @@ class CompletableFutureAssert_failsWithin_Test {
                       .withMessage(null);
   }
 
-  @DisabledOnOs(MAC) // Fails only on the Mac runner of GitHub Actions, but succeeds locally
   @Test
   void should_fail_if_future_completes_within_given_timeout() {
     // GIVEN
@@ -80,7 +77,6 @@ class CompletableFutureAssert_failsWithin_Test {
     then(assertionError).hasMessageContainingAll("Completed", "to have failed within 500L MILLISECONDS.");
   }
 
-  @DisabledOnOs(MAC) // Fails only on the Mac runner of GitHub Actions, but succeeds locally
   @Test
   void should_fail_if_future_completes_within_given_timeout_Duration() {
     // GIVEN
